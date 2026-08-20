@@ -1,0 +1,8 @@
+replicaCount: 1
+image:
+  repository: localhost:5000/demo-app
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
