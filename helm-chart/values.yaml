@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: yourdockerhubusername/demo-app
+  repository: bhau2707/demo-app
   tag: latest
   pullPolicy: IfNotPresent
 service:
