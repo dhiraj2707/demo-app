@@ -5,7 +5,7 @@ pipeline {
         jdk 'jdk-17'
     }
     environment {
-        DOCKERHUB_USER = "dhiraj2707"   // <-- replace this
+        DOCKERHUB_USER = "bhau2707"   // <-- replace this
         IMAGE_NAME     = "demo-app"
         IMAGE_TAG      = "${env.BUILD_NUMBER}"
         FULL_IMAGE     = "${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
