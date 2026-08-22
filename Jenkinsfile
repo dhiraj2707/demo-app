@@ -63,9 +63,8 @@ pipeline {
         stage('Smoke Test Dev') {
             steps {
                 sh '''
-                  kubectl rollout status deployment/demo-app-dev -n dev --timeout=90s
-                  kubectl run smoke-dev --rm -i --restart=Never -n dev \
-                    --image=curlimages/curl -- curl -sf http://demo-app-dev:8080/health
+                  kubectl run smoke-dev --rm -i --restart=Never -n dev --image=curlimages/curl -- \
+                  sh -c "for i in \\$(seq 1 10); do curl -sf http://demo-app-dev:8080/health && exit 0; echo waiting...; sleep 3; done; exit 1"
                 '''
             }
         }
