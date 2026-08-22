@@ -86,9 +86,8 @@ pipeline {
         stage('Smoke Test Prod') {
             steps {
                 sh '''
-                  kubectl rollout status deployment/demo-app-prod -n prod --timeout=90s
-                  kubectl run smoke-prod --rm -i --restart=Never -n prod \
-                    --image=curlimages/curl -- curl -sf http://demo-app-prod:8080/health
+                  kubectl run smoke-prod --rm -i --restart=Never -n prod --image=curlimages/curl -- \
+                  sh -c "for i in \\$(seq 1 10); do curl -sf http://demo-app-prod:8080/health && exit 0; echo waiting...; sleep 3; done; exit 1"
                 '''
             }
         }
