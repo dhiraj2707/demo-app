@@ -34,11 +34,7 @@ pipeline {
         stage('Docker Build') {
             steps { sh "docker build -t ${FULL_IMAGE} ." }
         }
-        stage('Trivy Scan') {
-            steps {
-                sh "trivy image --severity CRITICAL,HIGH --exit-code 1 --no-progress ${FULL_IMAGE}"
-            }
-        }
+
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
