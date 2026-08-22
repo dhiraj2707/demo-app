@@ -1,8 +1,10 @@
 replicaCount: 1
+
 image:
-  repository: bhau2707/demo-app
+  repository: bhau2707@/demo-app
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+
 service:
   type: ClusterIP
   port: 8080
